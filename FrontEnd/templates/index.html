@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum AI | Sugestões Inteligentes</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">Curriculum <span class="ai-highlight">AI</span></div>
+        <nav>
+            <a href="#">Início</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+        
+        <section class="coluna-esquerda">
+            <h2>1. Envie seu Currículo</h2>
+            
+            <div class="upload-area">
+                <input type="file" id="curriculo-file" accept=".docx, .pdf, .txt">
+                <label for="curriculo-file" class="upload-label">
+                    Clique para Enviar (.docx)
+                </label>
+                <p id="file-name-display" class="file-name-display-placeholder">Nenhum arquivo selecionado.</p>
+            </div>
+            
+            <h3>Texto para Análise (Editável)</h3>
+            <textarea id="curriculo-input" 
+                      placeholder="O texto extraído do seu currículo aparecerá aqui, e você poderá editá-lo antes de analisar." 
+                      disabled></textarea> 
+            
+            <button id="analisar-btn" class="btn-roxo">Analisar Currículo</button>
+            
+            <div class="feedback-area">
+                <p>O texto será processado pelo Python e enviado à Gemini API. A edição permite ajustes finos antes da análise.</p>
+            </div>
+        </section>
+
+        <section class="coluna-direita">
+            <h2>2. Sugestões e Melhorias</h2>
+            
+            <div class="resultado-box">
+                <h3>Resultado da Análise</h3>
+                <div id="sugestoes-output">
+                    <p class="placeholder-text">Suas sugestões de melhoria aparecerão aqui após a análise:</p>
+                    <ul>
+                        <li><span class="highlight-sugestao">Métricas:</span> Use números e resultados sempre que possível (ex: "Aumentei as vendas em 15%").</li>
+                        <li><span class="highlight-sugestao">Palavras-Chave:</span> Inclua termos específicos da sua área de atuação.</li>
+                        <li><span class="highlight-sugestao">Formatação:</span> Garanta que a estrutura está limpa e fácil de ler.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="campos-adicionais">
+                <h3>Ajustar Análise (Opcional)</h3>
+                <p>Se você souber o cargo alvo, a IA pode focar as sugestões:</p>
+                <input type="text" placeholder="Cargo alvo (Ex: Desenvolvedor Front-end)">
+                <input type="text" placeholder="Nível de experiência">
+            </div>
+        </section>
+
+    </main>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

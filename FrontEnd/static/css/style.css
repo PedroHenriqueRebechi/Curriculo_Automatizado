@@ -1,0 +1,224 @@
+/* Definição das variáveis de cor */
+:root {
+    --roxo-escuro: #4A148C; /* Roxo escuro, vibrante (Deep Purple) */
+    --roxo-claro: #7B1FA2; /* Um pouco mais claro para hover */
+    --branco: #FFFFFF;
+    --fundo-claro: #F8F8F8; /* Um cinza bem claro para o fundo */
+    --texto-escuro: #333333;
+    --borda-clara: #E0E0E0;
+    --sombra: rgba(0, 0, 0, 0.05);
+}
+
+/* Reset Básico e Fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--fundo-claro);
+    color: var(--texto-escuro);
+    padding-top: 60px; /* Espaço para a barra de navegação fixa */
+}
+
+/* 1. BARRA DE NAVEGAÇÃO */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--roxo-escuro);
+    color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.ai-highlight {
+    color: #FFC107; /* Um amarelo/dourado para destacar o AI */
+}
+
+nav a {
+    color: var(--branco);
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--roxo-claro);
+}
+
+/* 2. LAYOUT PRINCIPAL (DUAS COLUNAS) */
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 60px); /* Altura total menos o header */
+}
+
+.coluna-esquerda,
+.coluna-direita {
+    flex: 1; /* Faz com que ambas ocupem 50% da largura */
+    padding: 30px 40px;
+    overflow-y: auto; /* Permite rolagem se o conteúdo for longo */
+}
+
+.coluna-esquerda {
+    background-color: var(--branco);
+    border-right: 1px solid var(--borda-clara);
+}
+
+.coluna-direita {
+    background-color: var(--fundo-claro);
+}
+
+h2 {
+    color: var(--roxo-escuro);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--roxo-claro);
+    padding-bottom: 5px;
+}
+h3 {
+    color: var(--texto-escuro);
+    margin: 20px 0 10px;
+}
+
+/* 3. ESTILOS DO CAMPO DE UPLOAD */
+.upload-area {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#curriculo-file {
+    display: none; /* Esconde o input feio do navegador */
+}
+
+.upload-label {
+    display: block;
+    padding: 15px;
+    border: 2px dashed var(--roxo-claro);
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: var(--fundo-claro);
+    color: var(--roxo-escuro);
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+    background-color: var(--borda-clara);
+}
+
+.file-name-display-placeholder, #file-name-display {
+    margin-top: 10px;
+    font-style: italic;
+    color: #777;
+    font-size: 14px;
+}
+
+/* ESTILOS DA TEXTAREA (Área de Edição) */
+textarea {
+    width: 100%;
+    min-height: 300px; /* Reduzimos um pouco para caber a área de upload */
+    padding: 15px;
+    border: 1px solid var(--borda-clara);
+    border-radius: 6px;
+    font-size: 16px;
+    resize: vertical;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: var(--fundo-claro); /* Cor de fundo para indicar que é um campo secundário/visualizador */
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+textarea:disabled {
+    cursor: not-allowed;
+    background-color: #EEEEEE;
+    border-color: var(--borda-clara);
+}
+
+/* ESTILOS DO BOTÃO */
+.btn-roxo {
+    background-color: var(--roxo-escuro);
+    color: var(--branco);
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%; /* Botão em largura total */
+}
+
+.btn-roxo:hover {
+    background-color: var(--roxo-claro);
+}
+
+/* 4. ESTILOS DA COLUNA DIREITA (SUGESTÕES) */
+.resultado-box {
+    background-color: var(--branco);
+    border: 1px solid var(--borda-clara);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px var(--sombra);
+}
+
+.resultado-box h3 {
+    color: var(--roxo-escuro);
+    border-bottom: 1px solid var(--borda-clara);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#sugestoes-output ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#sugestoes-output li {
+    background-color: var(--fundo-claro);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border-left: 4px solid var(--roxo-claro);
+}
+
+.highlight-sugestao {
+    font-weight: bold;
+    color: var(--roxo-escuro);
+}
+
+.placeholder-text {
+    color: #777;
+    font-style: italic;
+}
+
+/* 5. ESTILOS DOS CAMPOS ADICIONAIS */
+.campos-adicionais input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--borda-clara);
+    border-radius: 4px;
+}
+
+/* 6. ESTILOS DE FEEDBACK (Opcional) */
+.feedback-area p {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
